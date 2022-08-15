@@ -1,5 +1,13 @@
 #!/bin/sh 
 while true; do 
-   xsetroot -name "$(date "+ : %D   : %H:%M")   : $(acpi -b | sed -n -e 's/^.*\(g, \)//p')"
-      sleep 5
-done
+
+if acpi -b | grep ng
+then 
+xsetroot -name "$(date "+ : %D   : %H:%M")   : $(acpi -b | sed -n -e 's/^.*\(g, \)//p')"
+else
+xsetroot -name "$(date "+ : %D   : %H:%M")   : $(acpi -b | sed -n -e 's/^.*\(wn, \)//p')"
+fi
+
+sleep 5s
+
+done 
